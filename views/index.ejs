@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Listagem</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Listagem de Itens</h1>
+        <form action="/add" method="POST">
+            <input type="text" name="title" placeholder="Escreva" required>
+            <button type="submit">Inserir</button>
+        </form>
+        <ul>
+            <% todos.forEach(todo => { %>
+                <li>
+                    <span><%= todo.title %></span>
+                    <form action="/delete" method="POST" style="display:inline;">
+                        <input type="hidden" name="id" value="<%= todo.id %>">
+                        <button type="submit">Excluir</button>
+                    </form>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+</body>
+</html>
